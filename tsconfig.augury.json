@@ -1,0 +1,21 @@
+/*
+https://medium.com/swlh/let-angular-ivy-work-with-augury-simply-workaround-2c86ded1b3a5
+*/
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "angularCompilerOptions": {
+    "debug": true,
+    "enableIvy": false
+  }
+}

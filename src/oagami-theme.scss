@@ -1,0 +1,20 @@
+// Custom Theming for Angular Material
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$oagami-primary: mat-palette($mat-teal, 800);
+$oagami-accent: mat-palette($mat-blue-grey, 100);
+$oagami-warn: mat-palette($mat-red);
+
+$oagami-theme: mat-light-theme(
+  (
+    color: (
+      primary: $oagami-primary,
+      accent: $oagami-accent,
+      warn: $oagami-warn,
+    ),
+  )
+);
+
+@include angular-material-theme($oagami-theme);
