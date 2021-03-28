@@ -38,6 +38,7 @@ import { DomSanitizer } from '@angular/platform-browser'
 })
 export class AppComponent {
   title = 'Oagami'
+  // this comment is just a test
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
       'agami-bird',
