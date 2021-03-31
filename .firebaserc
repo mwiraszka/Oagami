@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "oagami-911cb"
+  },
+  "targets": {
+    "oagami-911cb": {
+      "hosting": {
+        "Oagami": [
+          "oagami-911cb"
+        ]
+      }
+    }
+  }
+}

@@ -2,27 +2,45 @@ import { TestBed } from '@angular/core/testing'
 import { MediaObserver } from '@angular/flex-layout'
 import { MatIconRegistry } from '@angular/material/icon'
 import { DomSanitizer } from '@angular/platform-browser'
+import {
+  ObservablePropertyStrategy,
+  autoSpyObj,
+  createComponentMock,
+  injectSpy,
+} from 'angular-unit-test-helper'
 
 import { AppComponent } from './app.component'
+import { AuthService, defaultAuthStatus } from './auth/auth.service'
 import {
   DomSanitizerFake,
   MatIconRegistryFake,
   MediaObserverFake,
   commonTestingModules,
-  commonTestingProviders,
 } from './common/common.testing'
 
 describe('AppComponent', () => {
+  let authServiceMock: jasmine.SpyObj<AuthService>
+
   beforeEach(async () => {
+    const authServiceSpy = autoSpyObj(
+      AuthService,
+      ['authStatus$'],
+      ObservablePropertyStrategy.BehaviorSubject
+    )
+
     await TestBed.configureTestingModule({
       imports: commonTestingModules,
-      providers: commonTestingProviders.concat([
+      providers: [
         { provide: MediaObserver, useClass: MediaObserverFake },
         { provide: MatIconRegistry, useClass: MatIconRegistryFake },
         { provide: DomSanitizer, useClass: DomSanitizerFake },
-      ]),
-      declarations: [AppComponent],
+        { provide: AuthService, useValue: authServiceSpy },
+      ],
+      declarations: [AppComponent, createComponentMock('NavigationMenuComponent')],
     }).compileComponents()
+
+    authServiceMock = injectSpy(AuthService)
+    authServiceMock.authStatus$.next(defaultAuthStatus)
   })
 
   it('should create the app', () => {
@@ -31,10 +49,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy()
   })
 
-  xit('should render title', () => {
+  it('should render app-container', () => {
     const fixture = TestBed.createComponent(AppComponent)
     fixture.detectChanges()
     const compiled = fixture.debugElement.nativeElement
-    expect(compiled.querySelector('span.mat-h2').textContent).toContain('Oagami')
+    expect(compiled.querySelector('.app-container')).toBeDefined()
   })
 })
