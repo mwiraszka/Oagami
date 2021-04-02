@@ -20,7 +20,6 @@ export interface IPhone {
 }
 
 export interface IUser {
-  readonly fullName?: string
   _id: string
   email: string
   name: IName
@@ -37,6 +36,7 @@ export interface IUser {
     postcode: string
   }
   phones: IPhone[]
+  readonly fullName?: string
 }
 
 export class User implements IUser {
@@ -63,7 +63,7 @@ export class User implements IUser {
     public phones: IPhone[] = []
   ) {}
 
-  static Build(user: IUser): User {
+  static Build(user: IUser) {
     if (!user) {
       return new User()
     }

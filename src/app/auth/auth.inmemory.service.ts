@@ -14,7 +14,7 @@ export class InMemoryAuthService extends AuthService {
     name: { first: 'Michal', last: 'Wiraszka' },
     picture: '',
     role: Role.Manager,
-    dateOfBirth: new Date(1991, 15, 1),
+    dateOfBirth: new Date(1991, 1, 15),
     userStatus: true,
     address: {
       line1: '100 London Road',
@@ -37,7 +37,6 @@ export class InMemoryAuthService extends AuthService {
     console.warn(
       "You're using the InMemoryAuthService. Do not use this service in production."
     )
-    console.log(User)
   }
 
   protected authProvider(

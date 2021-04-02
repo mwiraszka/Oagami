@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core'
   template: `
     <p>
       This page doesn't exist. Go back to
-      <a routerLink="/home">home</a>
+      <a routerLink="/home">home</a>.
     </p>
   `,
   styles: [],
