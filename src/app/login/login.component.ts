@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private uiService: UiService
   ) {
+    console.log('in constructor')
     this.subs.sink = route.paramMap.subscribe(
       (params) => (this.redirectUrl = params.get('redirectUrl') ?? '')
     )
