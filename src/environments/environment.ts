@@ -2,7 +2,7 @@ import { AuthMode } from '../app/auth/auth.enum'
 
 export const environment = {
   production: true,
-  authMode: AuthMode.InMemory,
+  authMode: AuthMode.Firebase,
   firebase: {
     apiKey: '', // temp
     authDomain: 'oagami-911cb.firebaseapp.com',
