@@ -44,7 +44,6 @@
               "src/oagami-theme.scss",
               "src/styles.css"
             ],
-            "allowedCommonJsDependencies": ["fake-jwt-sign"],
             "scripts": []
           },
           "configurations": {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { sign } from 'fake-jwt-sign'
+//import { sign } from 'fake-jwt-sign'
 import { Observable, of, throwError } from 'rxjs'
 
 import { PhoneType, User } from '../user/user'
@@ -63,11 +63,15 @@ export class InMemoryAuthService extends AuthService {
 
     this.defaultUser.role = authStatus.userRole
 
+    // const authResponse = {
+    //   accessToken: sign(authStatus, 'secret', {
+    //     expiresIn: '1h',
+    //     algorithm: 'none',
+    //   }),
+    // } as IServerAuthResponse
+
     const authResponse = {
-      accessToken: sign(authStatus, 'secret', {
-        expiresIn: '1h',
-        algorithm: 'none',
-      }),
+      accessToken: 'dummy-access-token'
     } as IServerAuthResponse
 
     return of(authResponse)
